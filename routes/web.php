@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
+Route::get('/', 'TransactionController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
 
@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
         'transactions/transfer' => 'TransferController',
         'methods' => 'MethodController',
     ]);
-    
+
     Route::resource('transactions', 'TransactionController')->except(['create', 'show']);
     Route::get('transactions/stats/{year?}/{month?}/{day?}', ['as' => 'transactions.stats', 'uses' => 'TransactionController@stats']);
     Route::get('transactions/{type}', ['as' => 'transactions.type', 'uses' => 'TransactionController@type']);

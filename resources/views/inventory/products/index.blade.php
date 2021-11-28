@@ -24,8 +24,6 @@
                                 <th scope="col">Product</th>
                                 <th scope="col">Base Price</th>
                                 <th scope="col">Stock</th>
-                                <th scope="col">Faulty</th>
-                                <th scope="col">Total Sold</th>
                                 <th scope="col"></th>
                             </thead>
                             <tbody>
@@ -33,14 +31,10 @@
                                     <tr>
                                         <td><a href="{{ route('categories.show', $product->category) }}">{{ $product->category->name }}</a></td>
                                         <td>{{ $product->name }}</td>
-                                        <td>{{ format_money($product->price) }}</td>
+                                        <td>Rs {{ ($product->price) }}</td>
                                         <td>{{ $product->stock }}</td>
-                                        <td>{{ $product->stock_defective }}</td>
-                                        <td>{{ $product->solds->sum('qty') }}</td>
                                         <td class="td-actions text-right">
-                                            <a href="{{ route('products.show', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
-                                                <i class="tim-icons icon-zoom-split"></i>
-                                            </a>
+
                                             <a href="{{ route('products.edit', $product) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Product">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>

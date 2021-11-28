@@ -1,5 +1,7 @@
 <?php
 
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +13,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        DB::table('payment_methods')->insert([
+            [
+                'id' => 1,
+                'name' => 'Check',
+                'description' => 'This is check option'
+            ],
+            [
+                'id' => 2,
+                'name' => 'Cash',
+                'description' => 'This is cash option'
+            ]
+
+        ]);
     }
 }

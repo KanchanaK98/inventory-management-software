@@ -28,9 +28,9 @@
                                 <th>Method</th>
                                 <th>Amount</th>
                                 <th>Reference</th>
-                                <th>Client</th>
+                                {{-- <th>Client</th>
                                 <th>Provider</th>
-                                <th>Transfer</th>
+                                <th>Transfer</th> --}}
                                 <th></th>
                             </thead>
                             <tbody>
@@ -41,30 +41,10 @@
                                             <a href="{{ route('transactions.type', ['type' => $transaction->type]) }}">{{ $transactionname[$transaction->type] }}</a>
                                         </td>
                                         <td style="max-width:150px">{{ $transaction->title }}</td>
-                                        <td><a href="{{ route('methods.show', $transaction->method) }}">{{ $transaction->method->name }}</a></td>
-                                        <td>{{ format_money($transaction->amount) }}</td>
+                                        <td>{{ $transaction->method->name }}</td>
+                                        <td>Rs {{ ($transaction->amount) }}</td>
                                         <td>{{ $transaction->reference }}</td>
-                                        <td>
-                                            @if ($transaction->client)
-                                                <a href="{{ route('clients.show', $transaction->client) }}">{{ $transaction->client->name }}<br>{{ $transaction->client->document_type }}-{{ $transaction->client->document_id }}</a>
-                                            @else
-                                                Does not apply
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($transaction->provider)
-                                                <a href="{{ route('providers.show', $transaction->provider) }}">{{ $transaction->provider->name }}</a>
-                                            @else
-                                                Does not apply
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($transaction->transfer)
-                                                <a href="{{ route('transfer.show', $transaction->transfer) }}">ID {{ $transaction->transfer->id }}</a>
-                                            @else
-                                                Does not apply
-                                            @endif
-                                        </td>
+
                                         <td class="td-actions text-right">
                                             @if ($transaction->sale_id)
                                                 <a href="{{ route('sales.show', $transaction->sale) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More details">
@@ -116,7 +96,6 @@
                         <a href="{{ route('transactions.create', ['type' => 'income']) }}" class="btn btn-sm btn-primary">Income</a>
                         <a href="{{ route('transactions.create', ['type' => 'expense']) }}" class="btn btn-sm btn-primary">Expense</a>
                         <a href="{{ route('sales.create') }}" class="btn btn-sm btn-primary">Sale</a>
-                        <a href="{{ route('transfer.create') }}" class="btn btn-sm btn-primary">Transfer</a>
                     </div>
                 </div>
             </div>

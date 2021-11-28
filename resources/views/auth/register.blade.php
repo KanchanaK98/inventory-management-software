@@ -1,4 +1,4 @@
-@extends('layouts.app', ['class' => 'register-page', 'page' => 'Laravel Inventory', 'contentClass' => 'register-page', 'section' => 'auth'])
+@extends('layouts.app', ['class' => 'register-page', 'page' => 'IS 2210 - Inventory Management System', 'contentClass' => 'register-page', 'section' => 'auth'])
 
 @section('content')
     <div class="row">
@@ -48,12 +48,7 @@
                             <input type="password" name="password_confirmation" class="form-control" placeholder="Repeat Password">
                         </div>
                         <div class="form-check text-left {{ $errors->has('password') ? ' has-danger' : '' }}">
-                            <label class="form-check-label">
-                                <input class="form-check-input {{ $errors->has('agree_terms_and_conditions') ? ' is-invalid' : '' }}" name="agree_terms_and_conditions"  type="checkbox"  {{ old('agree_terms_and_conditions') ? 'checked' : '' }}>
-                                <span class="form-check-sign"></span>
-                                I confirm that I am human.
-                                @include('alerts.feedback', ['field' => 'agree_terms_and_conditions'])
-                            </label>
+
                         </div>
                     </div>
                     <div class="card-footer">

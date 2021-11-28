@@ -39,11 +39,9 @@
                                         </td>
                                         <td>{{ $provider->phone }}</td>
                                         <td>{{ $provider->transactions->count() }}</td>
-                                        <td>{{ format_money(abs($provider->transactions->sum('amount'))) }}</td>
+                                        <td>Rs {{ (abs($provider->transactions->sum('amount'))) }}</td>
                                         <td class="td-actions text-right">
-                                            <a href="{{ route('providers.show', $provider) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="More Details">
-                                                <i class="tim-icons icon-zoom-split"></i>
-                                            </a>
+
                                             <a href="{{ route('providers.edit', $provider) }}" class="btn btn-link" data-toggle="tooltip" data-placement="bottom" title="Edit Provider">
                                                 <i class="tim-icons icon-pencil"></i>
                                             </a>
